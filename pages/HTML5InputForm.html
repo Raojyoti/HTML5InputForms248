@@ -17,6 +17,7 @@
         <div>
             <label for="pwd">Password Input Type: </label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="password-error" for="pwd"></error-output>
         </div>
     </div>
     <div>
@@ -94,6 +95,17 @@
                     phoneError.textContent="";
             else
                     phoneError.textContent="Phone number is invalid";
+        });
+        /*UC4- As a User need to follow pre-defined Password rules. Rule1 – minimum 8 Characters */
+        let password=document.querySelector('#pwd');
+        let passwordError=document.querySelector('.password-error');
+        password.addEventListener('input',function()
+        {
+            let passwordRegex=RegExp('^[a-zA-Z0-9]{8,}$');
+            if(passwordRegex.test(password.value))
+                    passwordError.textContent="";
+            else
+                    passwordError.textContent="Password is invalid";
         });
     </script>
 </body>
